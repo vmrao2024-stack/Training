@@ -6,7 +6,7 @@
 <title>V. Mukesh Rao | Executive Mentorship & Career Strategy</title>
 
 <!-- SEO Metadata -->
-<meta name="description" content="Executive mentorship and career coaching with V. Mukesh Rao. Get practical guidance for career decisions, leadership growth, overthinking, and 90-day execution planning.">
+<meta name="description" content="Executive mentorship and career coaching with V. Mukesh Rao. Get practical guidance for career decisions, leadership growth, overthinking, and execution planning.">
 <meta name="keywords" content="Executive mentorship, Career decision coaching, Leadership mentorship, Executive coach India, Career coach India, 1:1 mentorship, V Mukesh Rao">
 <meta name="author" content="V. Mukesh Rao - Re-Build Yourself">
 
@@ -15,9 +15,6 @@
 
 <!-- Calendly External JavaScript -->
 <script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js" async></script>
-
-<!-- Razorpay Checkout JS -->
-<script src="https://checkout.razorpay.com/v1/checkout.js"></script>
 
 <style>
 :root {
@@ -39,14 +36,8 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helve
 
 /* ANIMATION KEYFRAMES */
 @keyframes fadeInUp {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
 }
 
 @keyframes pulseGlow {
@@ -57,6 +48,37 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helve
 
 .animate-fade-in {
   animation: fadeInUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* TOP LANGUAGE BAR */
+.lang-bar {
+  background: var(--primary);
+  color: #fff;
+  padding: 8px 5%;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 10px;
+  font-size: 13px;
+  border-bottom: 1px solid #1e293b;
+}
+
+.lang-btn {
+  background: transparent;
+  color: #cbd5e1;
+  border: 1px solid #475569;
+  padding: 4px 12px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 12px;
+  transition: all 0.2s ease;
+}
+
+.lang-btn:hover, .lang-btn.active {
+  background: var(--secondary);
+  color: #ffffff;
+  border-color: var(--secondary);
 }
 
 /* NAVIGATION */
@@ -126,35 +148,32 @@ nav a:hover::after { width: 100%; }
   font-size: 15px;
   font-weight: 700;
   text-decoration: none;
-  cursor: pointer;
-  border: none;
   display: inline-block;
   transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
   position: relative;
   overflow: hidden;
 }
 
+/* INACTIVE / DISABLED BUTTON */
+.btn-disabled {
+  background: #94a3b8;
+  color: #ffffff;
+  cursor: not-allowed;
+  opacity: 0.7;
+  pointer-events: none;
+  box-shadow: none;
+}
+
 .btn-primary {
   background: linear-gradient(135deg, #2563eb, #1d4ed8);
   color: #ffffff;
+  cursor: pointer;
   box-shadow: 0 4px 12px rgba(37, 99, 235, 0.25);
 }
 .btn-primary:hover {
   transform: translateY(-2px);
   box-shadow: 0 8px 20px rgba(37, 99, 235, 0.35);
   background: linear-gradient(135deg, #1d4ed8, #1e40af);
-}
-.btn-primary:active { transform: translateY(0); }
-
-.btn-secondary {
-  background: #f1f5f9;
-  color: var(--primary);
-  border: 1px solid #cbd5e1;
-}
-.btn-secondary:hover {
-  background: #e2e8f0;
-  transform: translateY(-2px);
-  border-color: #94a3b8;
 }
 
 .price-guarantee { font-size: 13px; color: #64748b; }
@@ -369,21 +388,6 @@ nav a:hover::after { width: 100%; }
   padding: 35px;
   box-shadow: var(--shadow-md);
 }
-.booking-box select {
-  width: 100%;
-  padding: 12px;
-  border-radius: 6px;
-  border: 1px solid #cbd5e1;
-  font-size: 15px;
-  font-weight: 600;
-  margin-bottom: 20px;
-  outline: none;
-  transition: border-color 0.2s, box-shadow 0.2s;
-}
-.booking-box select:focus {
-  border-color: var(--secondary);
-  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15);
-}
 
 /* FLOATING WHATSAPP WITH PULSE */
 .whatsapp-btn {
@@ -420,63 +424,73 @@ footer { background: var(--primary); color: #94a3b8; padding: 50px 5% 30px; font
 </head>
 <body>
 
+<!-- TOP LANGUAGE SELECTOR BAR -->
+<div class="lang-bar">
+  <span>Select Language / भाषा चुनें:</span>
+  <button class="lang-btn active" id="btn-en" onclick="setLanguage('en')">English</button>
+  <button class="lang-btn" id="btn-hi" onclick="setLanguage('hi')">हिंदी (Hindi)</button>
+</div>
+
 <header>
   <div>
     <span class="brand-title">V. MUKESH RAO</span>
-    <span class="brand-sub">Executive Mentorship & Strategy</span>
+    <span class="brand-sub" data-en="Executive Mentorship & Strategy" data-hi="एग्जीक्यूटिव मेंटरशिप और करियर रणनीति">Executive Mentorship & Strategy</span>
   </div>
   <nav>
-    <a href="#about">About</a>
-    <a href="#transformation">Framework</a>
-    <a href="#outcomes">Outcomes</a>
-    <a href="#booking">Book Call</a>
+    <a href="#about" data-en="About" data-hi="परिचय">About</a>
+    <a href="#transformation" data-en="Framework" data-hi="फ्रेमवर्क">Framework</a>
+    <a href="#outcomes" data-en="Focus Areas" data-hi="प्रमुख विषय">Focus Areas</a>
+    <a href="#booking" data-en="Book Call" data-hi="कॉल बुक करें">Book Call</a>
   </nav>
 </header>
 
 <!-- HERO SECTION -->
 <section class="hero animate-fade-in">
-  <span class="pill-badge">Re-Build Yourself Mentorship</span>
-  <h1>Stop Overthinking. Start Moving Forward.</h1>
-  <p>1:1 strategic mentorship for professionals facing career decisions, leadership challenges, and execution bottlenecks.</p>
+  <span class="pill-badge" data-en="Re-Build Yourself Mentorship" data-hi="री-बिल्ड योरसेल्फ मेंटरशिप">Re-Build Yourself Mentorship</span>
+  <h1 data-en="Stop Overthinking. Start Moving Forward." data-hi="सोचना बंद करें। आगे बढ़ना शुरू करें।">Stop Overthinking. Start Moving Forward.</h1>
+  <p data-en="1:1 strategic mentorship for professionals facing career decisions, leadership challenges, and execution bottlenecks." data-hi="करियर के फैसलों, नेतृत्व की चुनौतियों और निर्णय लेने की उलझन का सामना कर रहे पेशेवरों के लिए 1:1 रणनीतिक परामर्श।">1:1 strategic mentorship for professionals facing career decisions, leadership challenges, and execution bottlenecks.</p>
 
   <div class="hero-cta-group">
-    <a class="btn btn-primary" onclick="selectSession('paid')">Solve One Career Challenge — ₹500</a>
-    <a class="btn btn-secondary" onclick="selectSession('free')">🎁 Free 15-Min Intro Call</a>
+    <!-- INACTIVE BUTTON (NO LINK / NO AMOUNT) -->
+    <a class="btn btn-disabled" data-en="Solve One Career Challenge" data-hi="करियर की चुनौती को हल करें">Solve One Career Challenge</a>
+    
+    <!-- ACTIVE 15-MIN FREE CALL LINK -->
+    <a class="btn btn-primary" href="#booking" data-en="🎁 Free 15-Min Intro Call" data-hi="🎁 फ्री 15-मिनट परिचयात्मक कॉल">🎁 Free 15-Min Intro Call</a>
   </div>
-  <div class="price-guarantee">60-Minute Direct Mentorship • Guaranteed Action Blueprint</div>
+  <div class="price-guarantee" data-en="Free Direct Mentorship • Guaranteed Action Blueprint" data-hi="मुफ्त सीधा मार्गदर्शन • गारंटीकृत कार्य योजना">Free Direct Mentorship • Guaranteed Action Blueprint</div>
 </section>
 
 <!-- SECTION 2: TRANSFORMATION -->
 <section class="section" id="transformation">
   <div class="trans-box animate-fade-in">
     <div class="section-head" style="margin-bottom: 20px;">
-      <h2>One Problem. One Hour. One Clear Action Plan.</h2>
-      <p>Bring one specific career or business challenge. We won't just talk—we will solve it.</p>
+      <h2 data-en="One Problem. Clear Action Plan." data-hi="एक समस्या। स्पष्ट कार्य योजना।">One Problem. Clear Action Plan.</h2>
+      <p data-en="Bring one specific career or business challenge. We won't just talk—we will solve it." data-hi="अपनी एक विशिष्ट करियर या व्यावसायिक चुनौती लाएं। हम केवल बात नहीं करेंगे—हम इसे हल करेंगे।">Bring one specific career or business challenge. We won't just talk—we will solve it.</p>
     </div>
     <div class="trans-grid">
       <div class="trans-step">
         <div class="trans-step-num">Step 01</div>
-        <h4>Isolate the Challenge</h4>
-        <p style="font-size: 13px; color: #64748b;">Uncover the actual decision trap hiding behind emotional noise.</p>
+        <h4 data-en="Isolate the Challenge" data-hi="चुनौती की पहचान करें">Isolate the Challenge</h4>
+        <p style="font-size: 13px; color: #64748b;" data-en="Uncover the actual decision trap hiding behind emotional noise." data-hi="भावनात्मक भ्रम के पीछे छिपे वास्तविक निर्णय जाल को समझें।">Uncover the actual decision trap hiding behind emotional noise.</p>
       </div>
       <div class="trans-step">
         <div class="trans-step-num">Step 02</div>
-        <h4>Evaluate Trade-offs</h4>
-        <p style="font-size: 13px; color: #64748b;">Compare your options with risk frameworks used by senior executives.</p>
+        <h4 data-en="Evaluate Trade-offs" data-hi="विकल्पों का मूल्यांकन">Evaluate Trade-offs</h4>
+        <p style="font-size: 13px; color: #64748b;" data-en="Compare your options with risk frameworks used by senior executives." data-hi="वरिष्ठ अधिकारियों द्वारा उपयोग किए जाने वाले जोखिम ढांचे के साथ अपने विकल्पों की तुलना करें।">Compare your options with risk frameworks used by senior executives.</p>
       </div>
       <div class="trans-step">
         <div class="trans-step-num">Step 03</div>
-        <h4>Filter Blind Spots</h4>
-        <p style="font-size: 13px; color: #64748b;">Separate external pressure from what actually drives your career growth.</p>
+        <h4 data-en="Filter Blind Spots" data-hi="अनदेखे पहलुओं को समझें">Filter Blind Spots</h4>
+        <p style="font-size: 13px; color: #64748b;" data-en="Separate external pressure from what actually drives your career growth." data-hi="बाहरी दबाव को उस चीज़ से अलग करें जो वास्तव में आपके करियर के विकास को संचालित करती है।">Separate external pressure from what actually drives your career growth.</p>
       </div>
       <div class="trans-step">
         <div class="trans-step-num">Step 04</div>
-        <h4>Build Execution Plan</h4>
-        <p style="font-size: 13px; color: #64748b;">Map concrete steps for the next 30 to 90 days with zero ambiguity.</p>
+        <h4 data-en="Build Execution Plan" data-hi="कार्य योजना बनाएं">Build Execution Plan</h4>
+        <p style="font-size: 13px; color: #64748b;" data-en="Map concrete steps for the next 30 to 90 days with zero ambiguity." data-hi="अगले 30 से 90 दिनों के लिए बिना किसी भ्रम के ठोस कदम तय करें।">Map concrete steps for the next 30 to 90 days with zero ambiguity.</p>
       </div>
     </div>
     <div class="trans-outcome">
-      🎯 <strong>Your Session Outcome:</strong> You leave with absolute clarity, a personalized decision framework, and a written next-step plan.
+      🎯 <strong data-en="Your Session Outcome:" data-hi="आपका सत्र परिणाम:">Your Session Outcome:</strong> <span data-en="You leave with absolute clarity, a personalized decision framework, and a written next-step plan." data-hi="आप पूर्ण स्पष्टता, एक व्यक्तिगत निर्णय ढांचे और एक लिखित अगले कदम की योजना के साथ प्रस्थान करते हैं।">You leave with absolute clarity, a personalized decision framework, and a written next-step plan.</span>
     </div>
   </div>
 </section>
@@ -484,26 +498,26 @@ footer { background: var(--primary); color: #94a3b8; padding: 50px 5% 30px; font
 <!-- SECTION 3: IS THIS YOU? -->
 <section class="section section-alt">
   <div class="section-head">
-    <h2>Who Is This Mentorship For?</h2>
-    <p>This 1:1 format is specifically built for leaders and professionals facing critical career crossroads.</p>
+    <h2 data-en="Who Is This Mentorship For?" data-hi="यह परामर्श किसके लिए है?">Who Is This Mentorship For?</h2>
+    <p data-en="This 1:1 format is specifically built for leaders and professionals facing critical career crossroads." data-hi="यह 1:1 प्रारूप विशेष रूप से महत्वपूर्ण करियर चौराहे का सामना कर रहे नेताओं और पेशेवरों के लिए बनाया गया है।">This 1:1 format is specifically built for leaders and professionals facing critical career crossroads.</p>
   </div>
 
   <div class="audience-grid">
     <div class="audience-card">
-      <h3>Professionals Facing Job Changes</h3>
-      <p>“Should I stay, switch, or negotiate my position? I need to know the risks before I move.”</p>
+      <h3 data-en="Professionals Facing Job Changes" data-hi="नौकरी बदलने वाले पेशेवर">Professionals Facing Job Changes</h3>
+      <p data-en="“Should I stay, switch, or negotiate my position? I need to know the risks before I move.”" data-hi="“क्या मुझे रुकना चाहिए, बदलना चाहिए या अपनी स्थिति पर बातचीत करनी चाहिए? आगे बढ़ने से पहले मुझे जोखिम जानना होगा।”">“Should I stay, switch, or negotiate my position? I need to know the risks before I move.”</p>
     </div>
     <div class="audience-card">
-      <h3>Managers Preparing for Executive Growth</h3>
-      <p>“How do I transition from technical execution to strategic leadership and command authority?”</p>
+      <h3 data-en="Managers Preparing for Executive Growth" data-hi="कार्यकारी विकास की तैयारी कर रहे प्रबंधक">Managers Preparing for Executive Growth</h3>
+      <p data-en="“How do I transition from technical execution to strategic leadership and command authority?”" data-hi="“मैं तकनीकी निष्पादन से रणनीतिक नेतृत्व और अधिकार की दिशा में कैसे बदलाव करूं?”">“How do I transition from technical execution to strategic leadership and command authority?”</p>
     </div>
     <div class="audience-card">
-      <h3>Professionals Stuck in Analysis Paralysis</h3>
-      <p>“I know what I ought to do, but overthinking keeps me from making the actual call.”</p>
+      <h3 data-en="Professionals Stuck in Analysis Paralysis" data-hi="ज्यादा सोचने में उलझे हुए पेशेवर">Professionals Stuck in Analysis Paralysis</h3>
+      <p data-en="“I know what I ought to do, but overthinking keeps me from making the actual call.”" data-hi="“मुझे पता है कि मुझे क्या करना चाहिए, लेकिन बहुत अधिक सोचने के कारण मैं सही निर्णय नहीं ले पाता।”">“I know what I ought to do, but overthinking keeps me from making the actual call.”</p>
     </div>
     <div class="audience-card">
-      <h3>Entrepreneurs & Business Heads</h3>
-      <p>“I have multiple potential avenues and need an external, unemotional sounding board.”</p>
+      <h3 data-en="Entrepreneurs & Business Heads" data-hi="उद्यमी और व्यापार प्रमुख">Entrepreneurs & Business Heads</h3>
+      <p data-en="“I have multiple potential avenues and need an external, unemotional sounding board.”" data-hi="“मेरे पास कई संभावित रास्ते हैं और मुझे एक निष्पक्ष और व्यावहारिक सलाह की आवश्यकता है।”">“I have multiple potential avenues and need an external, unemotional sounding board.”</p>
     </div>
   </div>
 </section>
@@ -513,27 +527,27 @@ footer { background: var(--primary); color: #94a3b8; padding: 50px 5% 30px; font
   <div class="mentor-card">
     <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=600&q=80" alt="V. Mukesh Rao - Executive Mentor" class="mentor-img">
     <div>
-      <span style="color: var(--secondary); font-size: 12px; font-weight: 800; text-transform: uppercase;">Executive Mentor & Corporate Trainer</span>
+      <span style="color: var(--secondary); font-size: 12px; font-weight: 800; text-transform: uppercase;" data-en="Executive Mentor & Corporate Trainer" data-hi="एग्जीक्यूटिव मेंटर और कॉर्पोरेट ट्रेनर">Executive Mentor & Corporate Trainer</span>
       <h2 style="font-size: 28px; color: var(--text-dark); margin: 4px 0 10px;">V. Mukesh Rao</h2>
-      <div class="mentor-quote">
+      <div class="mentor-quote" data-en="“My goal isn't to tell you what decision to make. It's to help you think clearly enough to make the right decision yourself.”" data-hi="“मेरा लक्ष्य यह बताना नहीं है कि क्या निर्णय लेना है। इसका उद्देश्य आपको इतनी स्पष्टता देना है कि आप स्वयं सही निर्णय ले सकें।”">
         “My goal isn't to tell you what decision to make. It's to help you think clearly enough to make the right decision yourself.”
       </div>
-      <p style="font-size: 14.5px; color: #475569;">
-        With over 20 years of cross-industry experience in Recruitment, Business Development, and Enterprise Training, V. Mukesh Rao has organized 500+ corporate training programs across India for top enterprise leaders (including EY, John Deere, HSBC, Standard Chartered, Reliance, and Mahindra)[cite: 4]. Having managed global workforce upskilling initiatives across the US, UK, APAC, and India, he brings direct executive insights to 1:1 career strategy[cite: 4].
+      <p style="font-size: 14.5px; color: #475569;" data-en="With over 20 years of cross-industry experience in Recruitment, Business Development, and Enterprise Training, V. Mukesh Rao has organized 500+ corporate training programs across India for top enterprise leaders (including EY, John Deere, HSBC, Standard Chartered, Reliance, and Mahindra)[cite: 2]. Having managed global workforce upskilling initiatives across the US, UK, APAC, and India, he brings direct executive insights to 1:1 career strategy[cite: 2]." data-hi="भर्ती, व्यवसाय विकास और एंटरप्राइज प्रशिक्षण में 20 से अधिक वर्षों के अनुभव के साथ, वी. मुकेश राव ने भारत भर में शीर्ष कॉर्पोरेट नेताओं के लिए 500+ प्रशिक्षण कार्यक्रम आयोजित किए हैं[cite: 1, 2]। अमेरिका, यूके, एपीएसी और भारत में वैश्विक कार्यबल कौशल पहलों का प्रबंधन करने के बाद, वह 1:1 करियर रणनीति के लिए प्रत्यक्ष अंतर्दृष्टि प्रदान करते हैं[cite: 1, 2]।">
+        With over 20 years of cross-industry experience in Recruitment, Business Development, and Enterprise Training, V. Mukesh Rao has organized 500+ corporate training programs across India for top enterprise leaders (including EY, John Deere, HSBC, Standard Chartered, Reliance, and Mahindra)[cite: 2]. Having managed global workforce upskilling initiatives across the US, UK, APAC, and India, he brings direct executive insights to 1:1 career strategy[cite: 2].
       </p>
 
       <div class="mentor-stats">
         <div>
           <div class="stat-num">20+ Yrs</div>
-          <div class="stat-desc">Corporate Leadership</div>
+          <div class="stat-desc" data-en="Corporate Leadership" data-hi="कॉर्पोरेट नेतृत्व">Corporate Leadership</div>
         </div>
         <div>
           <div class="stat-num">500+</div>
-          <div class="stat-desc">Enterprise Programs</div>
+          <div class="stat-desc" data-en="Enterprise Programs" data-hi="एंटरप्राइज कार्यक्रम">Enterprise Programs</div>
         </div>
         <div>
           <div class="stat-num">Global</div>
-          <div class="stat-desc">US, UK, APAC & India</div>
+          <div class="stat-desc" data-en="US, UK, APAC & India" data-hi="अमेरिका, यूके, एपीएसी और भारत">US, UK, APAC & India</div>
         </div>
       </div>
     </div>
@@ -543,57 +557,57 @@ footer { background: var(--primary); color: #94a3b8; padding: 50px 5% 30px; font
 <!-- SECTION 5: OUTCOME MODULES -->
 <section class="section section-alt" id="outcomes">
   <div class="section-head">
-    <h2>Mentorship Focus Areas</h2>
-    <p>Select any area during your call to convert confusing choices into concrete deliverables.</p>
+    <h2 data-en="Mentorship Focus Areas" data-hi="परामर्श के मुख्य विषय (Agenda)">Mentorship Focus Areas</h2>
+    <p data-en="Select any key module during your call to convert confusing choices into concrete deliverables." data-hi="अपनी उलझन भरी प्राथमिकताओं को स्पष्ट परिणामों में बदलने के लिए किसी भी विषय को चुनें:">Select any key module during your call to convert confusing choices into concrete deliverables.</p>
   </div>
 
   <div class="module-grid">
     <div class="module-card">
       <div>
-        <h3>01 — Career Decision Clarity</h3>
+        <h3 data-en="01 — Who I Am?" data-hi="01 — Who I Am? (मेरी असली पहचान)">01 — Who I Am?</h3>
         <ul>
-          <li>Identify the core structural decision</li>
-          <li>Evaluate long-term career risks</li>
-          <li>Separate personal fear from market facts</li>
+          <li data-en="Discover your core identity and true self" data-hi="अपनी कोर पहचान (True Self) को डिस्कवर करें">Discover your core identity and true self</li>
+          <li data-en="Separate core values from external conditioning" data-hi="सामाजिक अपेक्षाओं और कंडीशनिंग से हटकर खुद को समझें">Separate core values from external conditioning</li>
+          <li data-en="Identify core strengths and inner capabilities" data-hi="अपनी वास्तविक क्षमताओं और व्यक्तिगत मूल्यों को पहचानें">Identify core strengths and inner capabilities</li>
         </ul>
       </div>
-      <div class="module-deliverable">→ Clear Decision Framework + Next Steps</div>
+      <div class="module-deliverable" data-en="→ Core Self & Value Map" data-hi="→ Core Self & Value Map">→ Core Self & Value Map</div>
     </div>
 
     <div class="module-card">
       <div>
-        <h3>02 — Executive Mindset</h3>
+        <h3 data-en="02 — Default Nature Analysis" data-hi="02 — Default Nature Analysis">02 — Default Nature Analysis</h3>
         <ul>
-          <li>Break self-limiting career patterns</li>
-          <li>Overcome senior imposter syndrome</li>
-          <li>Build executive presence & communication</li>
+          <li data-en="Analyze how your mind reacts under pressure" data-hi="दबाव में आपका दिमाग स्वभावतः कैसे react करता है, जानें">Analyze how your mind reacts under pressure</li>
+          <li data-en="Decode default habits and behavioral patterns" data-hi="अपने Behavioral Patterns और Default Habits को Decode करें">Decode default habits and behavioral patterns</li>
+          <li data-en="Control instinctive reactions for better responses" data-hi="परिस्थितियों पर नियंत्रण और सटीक प्रतिक्रिया देना सीखें">Control instinctive reactions for better responses</li>
         </ul>
       </div>
-      <div class="module-deliverable">→ Mindset Rewiring Action Sheet</div>
+      <div class="module-deliverable" data-en="→ Behavioral Pattern Assessment" data-hi="→ Behavioral Pattern Assessment">→ Behavioral Pattern Assessment</div>
     </div>
 
     <div class="module-card">
       <div>
-        <h3>03 — Anti-Overthink Blueprint</h3>
+        <h3 data-en="03 — Decision Making Masterclass" data-hi="03 — Decision Making Masterclass">03 — Decision Making Masterclass</h3>
         <ul>
-          <li>Stop thought loops and choice fatigue</li>
-          <li>Eliminate external social noise</li>
-          <li>Execute under incomplete information</li>
+          <li data-en="Balance emotional responses with logical analysis" data-hi="समझें कि आप फ़ैसले इमोशंस से लेते हैं या लॉजिक से">Balance emotional responses with logical analysis</li>
+          <li data-en="Overcome overthinking and fear-based hesitation" data-hi="Overthinking और डर पर आधारित फैसलों को खत्म करना सीखें">Overcome overthinking and fear-based hesitation</li>
+          <li data-en="Make quick, confident, and high-impact calls" data-hi="करियर और जीवन में स्पष्टता के साथ सटीक फैसले लें">Make quick, confident, and high-impact calls</li>
         </ul>
       </div>
-      <div class="module-deliverable">→ 10-Minute Rapid Focus Matrix</div>
+      <div class="module-deliverable" data-en="→ Strategic Decision Framework" data-hi="→ Strategic Decision Framework">→ Strategic Decision Framework</div>
     </div>
 
     <div class="module-card">
       <div>
-        <h3>04 — 90-Day Execution Roadmap</h3>
+        <h3 data-en="04 — Gaining Self-Clarity" data-hi="04 — Gaining Self-Clarity (आत्म-स्पष्टता)">04 — Gaining Self-Clarity</h3>
         <ul>
-          <li>Translate long-term strategy to daily habits</li>
-          <li>Set up progress-tracking metrics</li>
-          <li>Prevent executive burnout</li>
+          <li data-en="Eliminate career and personal life confusion" data-hi="जीवन और करियर की उलझनों और confusion को दूर करें">Eliminate career and personal life confusion</li>
+          <li data-en="Build a crystal-clear mindset for key goals" data-hi="लक्ष्यों के लिए 100% क्रिस्टल-क्लियर माइंडसेट बनाएं">Build a crystal-clear mindset for key goals</li>
+          <li data-en="Align daily execution with long-term strategy" data-hi="अपने दैनिक काम को लंबी अवधि के लक्ष्यों के साथ जोड़ें">Align daily execution with long-term strategy</li>
         </ul>
       </div>
-      <div class="module-deliverable">→ Written 90-Day Action Roadmap</div>
+      <div class="module-deliverable" data-en="→ Written Self-Clarity Roadmap" data-hi="→ Written Self-Clarity Roadmap">→ Written Self-Clarity Roadmap</div>
     </div>
   </div>
 </section>
@@ -601,35 +615,35 @@ footer { background: var(--primary); color: #94a3b8; padding: 50px 5% 30px; font
 <!-- SECTION 6: HOW IT WORKS -->
 <section class="section">
   <div class="section-head">
-    <h2>How It Works</h2>
-    <p>A simple, structured approach from initial booking to practical execution.</p>
+    <h2 data-en="How It Works" data-hi="यह कैसे काम करता है">How It Works</h2>
+    <p data-en="A simple, structured approach from initial booking to practical execution." data-hi="बुकिंग से लेकर व्यावहारिक निष्पादन तक एक सरल, व्यवस्थित दृष्टिकोण।">A simple, structured approach from initial booking to practical execution.</p>
   </div>
 
   <div class="hiw-grid">
     <div class="hiw-card">
       <div class="hiw-num">1</div>
-      <h4 style="font-size: 15px; margin-bottom: 5px;">Book Session</h4>
-      <p style="font-size: 12.5px; color: #64748b;">Select your session & reserve your time.</p>
+      <h4 style="font-size: 15px; margin-bottom: 5px;" data-en="Book Session" data-hi="सत्र बुक करें">Book Session</h4>
+      <p style="font-size: 12.5px; color: #64748b;" data-en="Reserve your free slot." data-hi="अपना मुफ्त समय स्लॉट आरक्षित करें।">Reserve your free slot.</p>
     </div>
     <div class="hiw-card">
       <div class="hiw-num">2</div>
-      <h4 style="font-size: 15px; margin-bottom: 5px;">Share Focus</h4>
-      <p style="font-size: 12.5px; color: #64748b;">Outline the key challenge you want to address.</p>
+      <h4 style="font-size: 15px; margin-bottom: 5px;" data-en="Share Focus" data-hi="मुद्दे साझा करें">Share Focus</h4>
+      <p style="font-size: 12.5px; color: #64748b;" data-en="Outline the key challenge you want to address." data-hi="मुख्य चुनौती की रूपरेखा दें जिसे आप हल करना चाहते हैं।">Outline the key challenge you want to address.</p>
     </div>
     <div class="hiw-card">
       <div class="hiw-num">3</div>
-      <h4 style="font-size: 15px; margin-bottom: 5px;">Join 1:1 Call</h4>
-      <p style="font-size: 12.5px; color: #64748b;">Connect on a private video meeting with Mukesh.</p>
+      <h4 style="font-size: 15px; margin-bottom: 5px;" data-en="Join 1:1 Call" data-hi="1:1 कॉल से जुड़ें">Join 1:1 Call</h4>
+      <p style="font-size: 12.5px; color: #64748b;" data-en="Connect on a private video meeting with Mukesh." data-hi="मुकेश के साथ एक निजी वीडियो बैठक में जुड़ें।">Connect on a private video meeting with Mukesh.</p>
     </div>
     <div class="hiw-card">
       <div class="hiw-num">4</div>
-      <h4 style="font-size: 15px; margin-bottom: 5px;">Gain Clarity</h4>
-      <p style="font-size: 12.5px; color: #64748b;">Analyze options and remove guesswork.</p>
+      <h4 style="font-size: 15px; margin-bottom: 5px;" data-en="Gain Clarity" data-hi="स्पष्टता प्राप्त करें">Gain Clarity</h4>
+      <p style="font-size: 12.5px; color: #64748b;" data-en="Analyze options and remove guesswork." data-hi="विकल्पों का विश्लेषण करें और अनुमान को खत्म करें।">Analyze options and remove guesswork.</p>
     </div>
     <div class="hiw-card">
       <div class="hiw-num">5</div>
-      <h4 style="font-size: 15px; margin-bottom: 5px;">Execute Plan</h4>
-      <p style="font-size: 12.5px; color: #64748b;">Leave with a written action strategy.</p>
+      <h4 style="font-size: 15px; margin-bottom: 5px;" data-en="Execute Plan" data-hi="योजना लागू करें">Execute Plan</h4>
+      <p style="font-size: 12.5px; color: #64748b;" data-en="Leave with a written action strategy." data-hi="एक लिखित कार्य रणनीति लेकर जाएं।">Leave with a written action strategy.</p>
     </div>
   </div>
 </section>
@@ -637,26 +651,26 @@ footer { background: var(--primary); color: #94a3b8; padding: 50px 5% 30px; font
 <!-- SECTION 7: TESTIMONIALS -->
 <section class="section section-alt">
   <div class="section-head">
-    <h2>Client Feedback</h2>
-    <p>Direct experiences from recent 1:1 strategy sessions.</p>
+    <h2 data-en="Client Feedback" data-hi="ग्राहकों की राय">Client Feedback</h2>
+    <p data-en="Direct experiences from recent 1:1 strategy sessions." data-hi="हाल के 1:1 रणनीति सत्रों के प्रत्यक्ष अनुभव।">Direct experiences from recent 1:1 strategy sessions.</p>
   </div>
 
   <div class="test-grid">
     <div class="test-card">
       <div class="test-stars">★★★★★</div>
-      <p class="test-text">“The session helped me break down a career decision I had been postponing for 6 months. I left with a clear action plan.”</p>
+      <p class="test-text" data-en="“The session helped me break down a career decision I had been postponing for 6 months. I left with a clear action plan.”" data-hi="“इस सत्र ने मुझे एक ऐसे करियर निर्णय को सुलझाने में मदद की जिसे मैं 6 महीने से टाल रहा था। मुझे एक स्पष्ट योजना मिली।”">“The session helped me break down a career decision I had been postponing for 6 months. I left with a clear action plan.”</p>
       <div class="test-author">Rajesh V.</div>
-      <div class="test-role">Senior IT Professional, Business Unit Lead — Bengaluru</div>
+      <div class="test-role">Senior IT Professional — Bengaluru</div>
     </div>
     <div class="test-card">
       <div class="test-stars">★★★★★</div>
-      <p class="test-text">“Mukesh didn't sell me generic advice. He asked sharp questions that forced me to see the actual risk in my job change.”</p>
+      <p class="test-text" data-en="“Mukesh didn't sell me generic advice. He asked sharp questions that forced me to see the actual risk in my job change.”" data-hi="“मुकेश जी ने मुझे सामान्य सलाह नहीं दी। उन्होंने तीखे सवाल पूछे जिससे मुझे अपनी नौकरी बदलने में वास्तविक जोखिम समझ आया।”">“Mukesh didn't sell me generic advice. He asked sharp questions that forced me to see the actual risk in my job change.”</p>
       <div class="test-author">Ananya Sharma</div>
       <div class="test-role">Operations Manager — Gurugram</div>
     </div>
     <div class="test-card">
       <div class="test-stars">★★★★★</div>
-      <p class="test-text">“Worth far more than the nominal fee. He helped me organize my thoughts and set a concrete 90-day trajectory.”</p>
+      <p class="test-text" data-en="“He helped me organize my thoughts and set a concrete 90-day trajectory.”" data-hi="“उन्होंने मुझे विचारों को व्यवस्थित करने और 90 दिनों का स्पष्ट रोडमैप बनाने में मदद की।”">“He helped me organize my thoughts and set a concrete 90-day trajectory.”</p>
       <div class="test-author">Karthik R.</div>
       <div class="test-role">Tech Lead / Consultant — Hyderabad</div>
     </div>
@@ -666,82 +680,43 @@ footer { background: var(--primary); color: #94a3b8; padding: 50px 5% 30px; font
 <!-- SECTION 8: FAQ -->
 <section class="section">
   <div class="section-head">
-    <h2>Frequently Asked Questions</h2>
+    <h2 data-en="Frequently Asked Questions" data-hi="अक्सर पूछे जाने वाले सवाल">Frequently Asked Questions</h2>
   </div>
 
   <div class="faq-grid">
     <div class="faq-item">
-      <h4>Who is this mentorship for?</h4>
-      <p>Professionals, managers, entrepreneurs, and leaders facing complex career decisions or execution bottlenecks.</p>
+      <h4 data-en="Who is this mentorship for?" data-hi="यह मेंटरशिप किसके लिए है?">Who is this mentorship for?</h4>
+      <p data-en="Professionals, managers, entrepreneurs, and leaders facing complex career decisions or execution bottlenecks." data-hi="जटिल करियर निर्णयों या रणनीतिक बाधाओं का सामना कर रहे पेशेवरों, प्रबंधकों और उद्यमियों के लिए।">Professionals, managers, entrepreneurs, and leaders facing complex career decisions or execution bottlenecks.</p>
     </div>
     <div class="faq-item">
-      <h4>Is this therapy?</h4>
-      <p>No. This is structured professional mentorship focused on practical career choices, execution, and executive growth.</p>
+      <h4 data-en="Is this therapy?" data-hi="क्या यह थेरेपी है?">Is this therapy?</h4>
+      <p data-en="No. This is structured professional mentorship focused on practical career choices, execution, and executive growth." data-hi="नहीं, यह व्यावहारिक करियर विकल्पों, निष्पादन और कार्यकारी विकास पर केंद्रित एक रणनीतिक परामर्श है।">No. This is structured professional mentorship focused on practical career choices, execution, and executive growth.</p>
     </div>
     <div class="faq-item">
-      <h4>How long is the paid mentorship session?</h4>
-      <p>The paid strategy session is 60 minutes long. The free intro call is 15 minutes.</p>
-    </div>
-    <div class="faq-item">
-      <h4>What happens after I complete payment?</h4>
-      <p>You will be immediately redirected to choose an available 60-minute slot on Calendly, followed by a calendar confirmation email.</p>
-    </div>
-    <div class="faq-item">
-      <h4>What should I prepare for the session?</h4>
-      <p>Bring one concrete challenge or career crossroads you want to resolve during our hour together.</p>
+      <h4 data-en="How long is the intro call?" data-hi="परिचयात्मक कॉल कितने समय की है?">How long is the intro call?</h4>
+      <p data-en="The free introductory mentorship call is 15 minutes long." data-hi="मुफ्त परिचयात्मक परामर्श कॉल 15 मिनट की है।">The free introductory mentorship call is 15 minutes long.</p>
     </div>
   </div>
 </section>
 
-<!-- SECTION 9: BOOKING -->
+<!-- SECTION 9: BOOKING (15-MIN FREE CALL ONLY) -->
 <section class="section section-alt" id="booking">
   <div class="section-head">
-    <h2>Ready to Get Unstuck?</h2>
-    <p>Select your session format below to begin.</p>
+    <h2 data-en="Ready to Get Unstuck?" data-hi="क्या आप स्पष्टता पाने के लिए तैयार हैं?">Ready to Get Unstuck?</h2>
+    <p data-en="Schedule your free 15-minute introductory strategy call below." data-hi="नीचे अपनी मुफ्त 15 मिनट की परिचयात्मक रणनीति कॉल शेड्यूल करें।">Schedule your free 15-minute introductory strategy call below.</p>
   </div>
 
   <div class="booking-box">
-    <label style="font-size: 13px; font-weight: 700; color: #64748b; display: block; margin-bottom: 8px;">SELECT SESSION FORMAT:</label>
-    <select id="session-select" onchange="toggleSessionType()">
-      <option value="paid">⚡ 60-Minute Strategy Session (₹500)</option>
-      <option value="free">🎁 FREE 15-Minute Introductory Call</option>
-    </select>
-
-    <!-- FREE 15-MIN SESSION FLOW -->
-    <div id="free-session-step" style="display: none;">
-      <div style="background: #e0f2fe; color: #0369a1; padding: 12px; border-radius: 6px; font-weight: 600; font-size: 13px; margin-bottom: 15px;">
-        🎁 Free 15-Minute Intro Call selected. Pick your preferred slot below:
-      </div>
-      <div class="calendly-inline-widget" data-url="https://calendly.com/resumebuilding-info/new-meeting" style="min-width:320px;height:650px;"></div>
+    <div style="background: #e0f2fe; color: #0369a1; padding: 12px; border-radius: 6px; font-weight: 600; font-size: 14px; margin-bottom: 20px; text-align: center;" data-en="🎁 FREE 15-Minute Introductory Call — Select your slot below:" data-hi="🎁 मुफ्त 15-मिनट परिचयात्मक कॉल — नीचे अपना समय चुनें:">
+      🎁 FREE 15-Minute Introductory Call — Select your slot below:
     </div>
-
-    <!-- PAID 60-MIN SESSION FLOW (INTEGRATED PAYMENTS) -->
-    <div id="paid-session-step">
-      <div id="payment-gate-wrapper">
-        <div style="text-align: center; padding: 20px 0;">
-          <h3 style="font-size: 20px; color: var(--text-dark);">60-Minute Direct Mentorship Session</h3>
-          <p style="font-size: 14px; color: #64748b; margin: 8px 0 20px;">Complete secure payment to choose your calendar time slot.</p>
-          <div style="font-size: 28px; font-weight: 800; color: var(--secondary); margin-bottom: 20px;">₹500</div>
-          
-          <button class="btn btn-primary" style="width: 100%; font-size: 16px;" onclick="payWithRazorpay()">Proceed to Payment & Select Time Slot →</button>
-        </div>
-      </div>
-
-      <!-- CALENDLY: 60-MIN EVENT (UNLOCKED AFTER SECURE PAYMENT) -->
-      <div id="calendly-step-paid" style="display: none;">
-        <div style="background: #dcfce7; color: #15803d; padding: 12px; border-radius: 6px; font-weight: 600; font-size: 13px; margin-bottom: 15px;">
-          ✅ Payment Verified! Pick your 60-Minute mentorship slot below:
-        </div>
-        <div class="calendly-inline-widget" data-url="https://calendly.com/resumebuilding-info/60min" style="min-width:320px;height:650px;"></div>
-      </div>
-    </div>
-
+    <div class="calendly-inline-widget" data-url="https://calendly.com/resumebuilding-info/new-meeting" style="min-width:320px;height:650px;"></div>
   </div>
 </section>
 
 <!-- FLOATING WHATSAPP -->
 <a href="https://wa.me/917532834509?text=Hi%20Mukesh,%20I%20have%20a%20question%20about%20the%201:1%20mentorship%20session." class="whatsapp-btn" target="_blank">
-  💬 Have Questions? Chat on WhatsApp
+  💬 <span data-en="Have Questions? Chat on WhatsApp" data-hi="सवाल हैं? व्हाट्सएप पर बात करें">Have Questions? Chat on WhatsApp</span>
 </a>
 
 <!-- FOOTER -->
@@ -749,25 +724,22 @@ footer { background: var(--primary); color: #94a3b8; padding: 50px 5% 30px; font
   <div class="footer-grid">
     <div class="footer-col">
       <h5>V. Mukesh Rao</h5>
-      <p style="font-size: 12px; line-height: 1.5;">Executive mentorship and strategic guidance designed to help leaders navigate career choices and build execution clarity.</p>
+      <p style="font-size: 12px; line-height: 1.5;" data-en="Executive mentorship and strategic guidance designed to help leaders navigate career choices and build execution clarity." data-hi="नेताओं को करियर विकल्पों और कार्य निष्पादन में स्पष्टता बनाने के लिए मेंटरशिप और रणनीतिक मार्गदर्शन।">Executive mentorship and strategic guidance designed to help leaders navigate career choices and build execution clarity.</p>
     </div>
     <div class="footer-col">
-      <h5>Quick Links</h5>
-      <a href="#about">About Mukesh</a>
-      <a href="#outcomes">Focus Areas</a>
-      <a href="#booking">Book 1:1 Session</a>
+      <h5 data-en="Quick Links" data-hi="क्विक लिंक्स">Quick Links</h5>
+      <a href="#about" data-en="About Mukesh" data-hi="मुकेश के बारे में">About Mukesh</a>
+      <a href="#outcomes" data-en="Focus Areas" data-hi="मुख्य विषय">Focus Areas</a>
+      <a href="#booking" data-en="Book 1:1 Session" data-hi="1:1 सत्र बुक करें">Book 1:1 Session</a>
     </div>
     <div class="footer-col">
-      <h5>Legal & Policies</h5>
-      <a href="/privacy-policy">Privacy Policy</a>
-      <a href="/terms">Terms & Conditions</a>
-      <a href="/refunds">Cancellation & Refund Policy</a>
-      <a href="/disclaimer">Disclaimer</a>
+      <h5 data-en="Legal & Policies" data-hi="कानूनी और नीतियां">Legal & Policies</h5>
+      <a href="/privacy-policy" data-en="Privacy Policy" data-hi="गोपनीयता नीति">Privacy Policy</a>
+      <a href="/terms" data-en="Terms & Conditions" data-hi="नियम एवं शर्तें">Terms & Conditions</a>
     </div>
     <div class="footer-col">
-      <h5>Connect</h5>
+      <h5 data-en="Connect" data-hi="संपर्क करें">Connect</h5>
       <a href="mailto:info@resumebuilding.shop">Email Us</a>
-      <a href="https://www.linkedin.com" target="_blank">LinkedIn Profile</a>
       <a href="https://wa.me/917532834509" target="_blank">WhatsApp Direct</a>
     </div>
   </div>
@@ -777,52 +749,19 @@ footer { background: var(--primary); color: #94a3b8; padding: 50px 5% 30px; font
 </footer>
 
 <script>
-// SESSION SELECTOR
-function toggleSessionType() {
-  const sessionVal = document.getElementById("session-select").value;
-  const freeStep = document.getElementById("free-session-step");
-  const paidStep = document.getElementById("paid-session-step");
+// DYNAMIC LANGUAGE SWITCHER FUNCTION
+function setLanguage(lang) {
+  document.getElementById('btn-en').classList.toggle('active', lang === 'en');
+  document.getElementById('btn-hi').classList.toggle('active', lang === 'hi');
 
-  if (sessionVal === "free") {
-    freeStep.style.display = "block";
-    paidStep.style.display = "none";
-  } else {
-    freeStep.style.display = "none";
-    paidStep.style.display = "block";
-  }
-}
-
-function selectSession(type) {
-  const select = document.getElementById("session-select");
-  select.value = type;
-  toggleSessionType();
-  document.getElementById("booking").scrollIntoView({ behavior: 'smooth' });
-}
-
-// REAL PAYMENT GATEWAY INTEGRATION
-function payWithRazorpay() {
-  var options = {
-    "key": "rzp_test_YOUR_KEY_HERE", // Replace with your live Razorpay Key ID
-    "amount": 50000,
-    "currency": "INR",
-    "name": "V. Mukesh Rao Mentorship",
-    "description": "60-Minute Executive Strategy Session",
-    "handler": function (response){
-        if(response.razorpay_payment_id) {
-          document.getElementById("payment-gate-wrapper").style.display = "none";
-          document.getElementById("calendly-step-paid").style.display = "block";
-        }
-    },
-    "prefill": {
-        "name": "",
-        "email": ""
-    },
-    "theme": {
-        "color": "#2563eb"
+  const elements = document.querySelectorAll('[data-en][data-hi]');
+  elements.forEach(el => {
+    if (lang === 'hi') {
+      el.textContent = el.getAttribute('data-hi');
+    } else {
+      el.textContent = el.getAttribute('data-en');
     }
-  };
-  var rzp1 = new Razorpay(options);
-  rzp1.open();
+  });
 }
 </script>
 
